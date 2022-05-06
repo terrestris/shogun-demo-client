@@ -1,5 +1,37 @@
 @import '~ol/ol.css';
 
+html {
+  --header-height: 4rem;
+  --footer-height: 2rem;
+
+  // Eierschale
+  --primaryColorR: 252;
+  --primaryColorG: 250;
+  --primaryColorB: 231;
+  --primaryColor: rgb(var(--primaryColorR), var(--primaryColorG), var(--primaryColorB));
+
+  // snow (light-gray)
+  --secondaryColorR: 252;
+  --secondaryColorG: 250;
+  --secondaryColorB: 231;
+  --secondaryColor: rgb(var(--secondaryColorR), var(--secondaryColorG), var(--secondaryColorB));
+
+  // brown -> mostly used as font, border or icon color
+  --tetriaryColorR: 145;
+  --tetriaryColorG: 113;
+  --tetriaryColorB: 2;
+  --tertiaryColor: rgb(var(--tetriaryColorR), var(--tetriaryColorG), var(--tetriaryColorB));
+
+  // Dark grey -> used as background of most UI elements (menu header, buttons etc.)
+  --complementaryColorR: 109;
+  --complementaryColorG: 109;
+  --complementaryColorB: 109;
+  --complementaryColor: rgb(var(--complementaryColorR), var(--complementaryColorG), var(--complementaryColorB));
+
+  --componentShadow: 0 6px 12px rgb(0 0 0 / 18%), 0 -6px 12px rgb(0 0 0 / 18%);
+
+}
+
 .App,
 #map {
   margin: 0;
