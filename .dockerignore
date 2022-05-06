@@ -1,0 +1,11 @@
+.git
+.github
+coverage
+dist
+node_modules
+test-results
+.dockerignore
+.editorconfig
+.gitignore
+Dockerfile
+Dockerfile.dev

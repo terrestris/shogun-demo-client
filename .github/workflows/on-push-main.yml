@@ -1,0 +1,41 @@
+name: Update gh-pages (latest)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources 🔰
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js 16 🧮
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+
+    - name: Cache Node.js modules 💾
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+
+    - name: Install dependencies ⏬
+      run: npm ci
+
+    - name: Build artifacts 🏗️
+      run: npm run build
+
+    - name: Deploy (to latest) 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.2.5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: dist
+        target-folder: latest

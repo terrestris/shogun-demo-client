@@ -1,0 +1,45 @@
+name: Test successful build
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources 🔰
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js 16
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+
+    - name: Cache Node.js modules 💾
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+
+    - name: Install dependencies ⏬
+      run: npm ci
+
+    - name: Install e2e browsers ⏬
+      run: |
+        npx playwright install
+        npx playwright install-deps
+
+    - name: Run typecheck, lint and tests 🧪
+      run: npm run check
+
+    - name: Save e2e failure screenshots 😱
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: e2e-failure-screenshots
+        path: test-results
+
+    - name: Build artifacts 🏗️
+      run: npm run build
