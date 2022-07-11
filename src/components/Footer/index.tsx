@@ -21,6 +21,7 @@ import ScaleCombo from '@terrestris/react-geo/dist/Field/ScaleCombo/ScaleCombo';
 import useMap from '@terrestris/react-geo/dist/Hook/useMap';
 
 import './index.less';
+import { useVersion } from '../../hooks/useVersion';
 
 export interface FooterProps extends React.ComponentProps<'div'> { }
 
@@ -113,6 +114,12 @@ export const Footer: React.FC<FooterProps> = ({
         />
         <div>
           {t('Footer.refSystem')}: {map.getView().getProjection().getCode()}
+        </div>
+        <Divider
+          type="vertical"
+        />
+        <div>
+          {t('Footer.version')}: {useVersion()}
         </div>
         <Divider
           type="vertical"
