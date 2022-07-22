@@ -41,7 +41,7 @@ import {
   unsetSelectedKey
 } from '../../store/toolMenu';
 
-import './AddLayerModal.less';
+import './index.less';
 
 export type AddLayerModalProps = {} & Partial<ModalProps>;
 

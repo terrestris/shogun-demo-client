@@ -2,7 +2,7 @@ import React, {
   useEffect
 } from 'react';
 
-import AddLayerModal from './components/AddLayerModal/AddLayerModal';
+import AddLayerModal from './components/AddLayerModal/index';
 import BasicMapComponent from './components/BasicMapComponent';
 import Footer from './components/Footer';
 import Header from './components/Header';
